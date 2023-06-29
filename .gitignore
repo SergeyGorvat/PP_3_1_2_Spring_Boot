@@ -31,3 +31,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/src/main/java/com/gorvat/pp_3_1_2_spring_boot/dao/

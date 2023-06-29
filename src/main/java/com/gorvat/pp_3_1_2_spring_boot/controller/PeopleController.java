@@ -1,6 +1,5 @@
 package com.gorvat.pp_3_1_2_spring_boot.controller;
 
-
 import com.gorvat.pp_3_1_2_spring_boot.model.Person;
 import com.gorvat.pp_3_1_2_spring_boot.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +21,18 @@ public class PeopleController {
     @GetMapping()
     public String index(ModelMap model) {
         model.addAttribute("people", personService.getAllPeople());
-        return "people/index";
+        return "pages/index";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, ModelMap model) {
         model.addAttribute("person", personService.getPersonById(id));
-        return "people/show";
+        return "pages/show";
     }
 
     @GetMapping("/new")
     public String newUser(@ModelAttribute("person") Person person) {
-        return "people/new";
+        return "pages/new";
     }
 
     @PostMapping()
@@ -45,7 +44,7 @@ public class PeopleController {
     @GetMapping("/{id}/edit")
     public String edit(ModelMap model, @PathVariable("id") int id) {
         model.addAttribute("person", personService.getPersonById(id));
-        return "people/edit";
+        return "pages/edit";
     }
 
     @PatchMapping("/{id}")
