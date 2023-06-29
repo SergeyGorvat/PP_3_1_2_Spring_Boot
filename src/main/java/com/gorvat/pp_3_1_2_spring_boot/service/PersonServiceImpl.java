@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional(readOnly = true)
 public class PersonServiceImpl implements PersonService {
 
     private final PersonRepository repository;
@@ -21,65 +20,35 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
+    @Transactional
     public void addPerson(Person person) {
         repository.save(person);
     }
 
     @Override
+    @Transactional
     public void updatePerson(int id, Person person) {
         person.setId(id);
         repository.save(person);
     }
 
     @Override
+    @Transactional
     public void removePerson(int id) {
         repository.deleteById(id);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Person getPersonById(int id) {
         Optional<Person> person = repository.findById(id); //  getReferenceById
         return person.orElse(null);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Person> getAllPeople() {
         return repository.findAll();
     }
 }
-
-//    private final PersonDao personDao;
-//
-//@Autowired
-//    public PersonServiceImpl(PersonDao personDao) {
-//        this.personDao = personDao;
-//    }
-//
-//    @Override
-//    @Transactional
-//    public void addPerson(Person person) {
-//        personDao.addPerson(person);
-//    }
-//
-//    @Override
-//    @Transactional
-//    public void updatePerson(int id, Person person) {
-//        personDao.updatePerson(id, person);
-//    }
-//
-//    @Override
-//    @Transactional
-//    public void removePerson(int id) {
-//        personDao.removePerson(id);
-//    }
-//
-//    @Override
-//    public Person getPersonById(int id) {
-//        return personDao.getPersonById(id);
-//    }
-//
-//    @Override
-//    public List<Person> getAllPeople() {
-//        return personDao.getAllPeople();
-//    }
 

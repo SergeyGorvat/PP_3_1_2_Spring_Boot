@@ -1,7 +1,5 @@
 package com.gorvat.pp_3_1_2_spring_boot.service;
 
-
-
 import com.gorvat.pp_3_1_2_spring_boot.model.Person;
 
 import java.util.List;
